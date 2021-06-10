@@ -3,12 +3,17 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  def show
+    @list = List.find(params[:id])
+  end
+
   def new
     @list = List.new
   end
 
   def create
     @list = List.new(list_params)
+
     if @list.save
       redirect_to list_path(@list)
     else
@@ -16,10 +21,9 @@ class ListsController < ApplicationController
     end
   end
 
-  def destroy
-    @list.destroy
-    redirect_to lists_path
-  end
+  def edit; end
+
+  def destroy; end
 
   private
 
